@@ -7,5 +7,13 @@
  */
 int check_cycle(listint_t *list)
 {
-    
+	listint_t *first = list, *trav = list;
+
+	while (trav != NULL)
+	{
+		trav = trav->next;
+		if (trav == first)
+			return (1);
+	}
+	return (0);
 }
