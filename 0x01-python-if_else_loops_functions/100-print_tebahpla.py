@@ -2,8 +2,8 @@
 flag = 0
 for i in range(ord('z'), ord('a') - 1, -1):
     if i % 2 == 0:
-        ch = i
+        i = i
     else:
-        ch = i - 32
+        i = i - 32
 
-    print('{:c}'.format(ch), end='')
+    print('{:c}'.format(i), end='')
