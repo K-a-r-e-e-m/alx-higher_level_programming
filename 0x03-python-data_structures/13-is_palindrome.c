@@ -17,13 +17,12 @@ int is_palindrome(listint_t **head)
 
 	if (!*head || !(*head)->next)
 		return (1);
-	while (trv && !trv->next)
-		trv = trv->next, n++;
-	if (n % 2)
-		start = (n / 2) + 2;
-	else
-		start = (n / 2) + 1;
-
+	while (trv)
+	{
+		trv = trv->next;
+		n++;
+	}
+	start = (n / 2) + 1;
 	j = (n / 2) - 1;
 	trv = *head;
 	while (trv)
