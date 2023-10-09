@@ -12,7 +12,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int n = 0, m = 0, start;
+	int n = 0, m = 0, start, j = 0, arr[n / 2];
 	listint_t *trv = *head;
 
 	if (!*head)
@@ -27,8 +27,8 @@ int is_palindrome(listint_t **head)
 	else
 		start = (n / 2) + 1;
 	trv = *head;
-	int arr[n / 2];
-	int j = (n / 2) - 1;
+	arr[n / 2] = arr[n / 2];
+	j = (n / 2) - 1;
 
 	while (trv)
 	{
