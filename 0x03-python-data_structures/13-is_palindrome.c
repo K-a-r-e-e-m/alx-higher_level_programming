@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
  * is_palindrome - check palindrome
@@ -15,6 +16,8 @@ int is_palindrome(listint_t **head)
 	int n = 0, m = 0, start = 0;
 	listint_t *trv = *head;
 
+	if (!*head)
+		return (1);
 	while (trv)
 	{
 		trv = trv->next;
