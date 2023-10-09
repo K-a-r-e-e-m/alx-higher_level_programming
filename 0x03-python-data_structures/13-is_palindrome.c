@@ -13,7 +13,7 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *trv = *head;
-	int n = 0, m = 0, start, j = 0;
+	int n = 0, m = 0, start, j = 0, k = 0;
 
 	if (!*head)
 		return (1);
@@ -23,26 +23,25 @@ int is_palindrome(listint_t **head)
 		start = (n / 2) + 2;
 	else
 		start = (n / 2) + 1;
-	trv = *head;
 
 	int arr[n / 2];
 
 	j = (n / 2) - 1;
+	trv = *head;
 	while (trv)
 	{
-		if (m == start - 1)
+		if (m == (start - 1))
 			break;
 		arr[j] = trv->n;
 		m++, j--;
 		trv = trv->next;
 	}
-	j = 0;
 	while (trv)
 	{
-		if (trv->n == arr[j])
+		if (trv->n == arr[k])
 		{
 			trv = trv->next;
-			j++;
+			k++;
 		}
 		else
 			return (0);
