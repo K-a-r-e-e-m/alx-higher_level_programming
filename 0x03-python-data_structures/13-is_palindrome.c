@@ -22,17 +22,19 @@ int is_palindrome(listint_t **head)
 		trv = trv->next;
 		n++;
 	}
-	start = (n / 2) + 1;
-	j = (n / 2) - 1;
+	start = (n / 2); /* 2 */
+	j = start - 1; /* 3 */
 	trv = *head;
 	while (trv)
 	{
-		if (m == (start - 1))
+		if (m == start) /* m = 0, start = 4 */
 			break;
 		arr[j] = trv->n;
-		m++, j--;
+		m++, j--; 
 		trv = trv->next;
+
 	}
+	(n % 2 ? (trv = trv->next) : trv);
 	while (trv)
 	{
 		if (trv->n == arr[k])
