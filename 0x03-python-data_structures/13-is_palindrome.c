@@ -23,8 +23,7 @@ int is_palindrome(listint_t **head)
 		start = (n / 2) + 2;
 	else
 		start = (n / 2) + 1;
-	n /= 2;
-	int arr[n];
+	int arr[99];
 
 	j = (n / 2) - 1;
 	trv = *head;
