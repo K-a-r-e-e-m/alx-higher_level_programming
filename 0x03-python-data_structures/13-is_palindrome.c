@@ -23,8 +23,8 @@ int is_palindrome(listint_t **head)
 		start = (n / 2) + 2;
 	else
 		start = (n / 2) + 1;
-
-	int arr[n / 2];
+	n /= 2;
+	int arr[n];
 
 	j = (n / 2) - 1;
 	trv = *head;
@@ -46,7 +46,5 @@ int is_palindrome(listint_t **head)
 		else
 			return (0);
 	}
-	if (!trv)
-		return (1);
-	return (0);
+	return (1);
 }
