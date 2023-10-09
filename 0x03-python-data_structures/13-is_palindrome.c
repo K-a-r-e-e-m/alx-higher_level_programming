@@ -13,7 +13,7 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *trv = *head;
-	int n = 0, j = 0, k = 0, arr[1000];
+	int n = 0, j = 0, k = 0, arr[1000]; /* Let 1000 is max value arr can hold */
 
 	while (trv) /* Count the length of list (n) */
 		trv = trv->next, n++;
