@@ -17,7 +17,7 @@ int is_palindrome(listint_t **head)
 
 	if (!*head || !(*head)->next)
 		return (1);
-	while (trv)
+	while (trv && !trv->next)
 		trv = trv->next, n++;
 	if (n % 2)
 		start = (n / 2) + 2;
