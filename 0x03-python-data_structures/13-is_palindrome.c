@@ -15,9 +15,6 @@ int is_palindrome(listint_t **head)
 	listint_t *trv = *head;
 	int n = 0, j = 0, k = 0, arr[1000];
 
-	if (!*head || !(*head)->next) /* If List is empty or list has one value */
-		return (1);
-
 	while (trv) /* Count the length of list (n) */
 		trv = trv->next, n++;
 	trv = *head; /* Make (trv) point to first node */
