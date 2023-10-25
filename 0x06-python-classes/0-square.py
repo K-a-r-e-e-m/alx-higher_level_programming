@@ -3,8 +3,7 @@
 
 
 class Square:
-    """ Exmaple of docstring.
-
+    '''Exmaple of docstring.
     This is an empty class :)
-    """
+    '''
     pass
