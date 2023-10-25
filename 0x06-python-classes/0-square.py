@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-""" Define a class """
+"""Define a class"""
 
 
 class Square:
-    '''Exmaple of docstring.
+    """Exmaple of docstring.
+
     This is an empty class :)
-    '''
+    """
     pass
