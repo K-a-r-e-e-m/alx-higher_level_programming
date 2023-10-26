@@ -8,13 +8,13 @@ class Square:
     This class for represent the square
     """
     def __init__(self, size=0, position=(0, 0)):
-    """Create a Square
-    Args:
-        size: length of a side of Square
-        position: where the square is (coordinates)
-    """
-    self.size = size
-    self.position = position
+        """Create a Square
+        Args:
+            size: length of a side of Square
+            position: where the square is (coordinates)
+        """
+        self.size = size
+        self.position = position
 
     def __str__(self):
         self.my_print()
