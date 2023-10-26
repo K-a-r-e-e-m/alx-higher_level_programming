@@ -1,24 +1,24 @@
 #!/usr/bin/python3
-"""Define a class Square."""
+"""This class defines a square"""
 
 
 class Square:
-    """Represent a square."""
+    """This class for represent the square."""
 
     def __init__(self, size=0, position=(0, 0)):
         """Initialize a new square.
 
         Args:
-            size (int): The size of the new square.
-            position (int, int): The position of the new square.
+            size (int): The size of square.
+            position (int, int): Position of square.
         """
-        self.size = size
-        self.position = position
+        self.__size = size
+        self.__position = position
 
     @property
     def size(self):
-        """Get/set the current size of the square."""
-        return (self.__size)
+        """setter method set value"""
+        return self.__size
 
     @size.setter
     def size(self, value):
@@ -30,7 +30,7 @@ class Square:
 
     @property
     def position(self):
-        """Get/set the current position of the square."""
+        """setter method set value."""
         return (self.__position)
 
     @position.setter
@@ -49,11 +49,11 @@ class Square:
     def my_print(self):
         """Print the square with the # character."""
         if self.__size == 0:
-            print("")
+            print()
             return
 
-        [print("") for i in range(0, self.__position[1])]
+        [print() for i in range(0, self.__position[1])]
         for i in range(0, self.__size):
-            [print(" ", end="") for j in range(0, self.__position[0])]
-            [print("#", end="") for k in range(0, self.__size)]
-            print("")
+            [print(' ', end='') for j in range(0, self.__position[0])]
+            [print('#', end='') for k in range(0, self.__size)]
+            print()
