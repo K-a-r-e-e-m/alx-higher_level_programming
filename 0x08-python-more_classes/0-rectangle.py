@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This class defines a rectangle"""
 
-calss Rectangle:
+class Rectangle:
     """Docstring of empty class"""
     pass
