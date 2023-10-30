@@ -58,6 +58,6 @@ class Rectangle:
         for x in range(self.__height):
             for i in range(self.__width):
                 draw += '#'
-            if (x != self.__height - 1) and (self.__width != 0) and (self.__height != 0):
+            if x != self.__height - 1 and self.__width and self.__height:
                 draw += '\n'
         return draw
