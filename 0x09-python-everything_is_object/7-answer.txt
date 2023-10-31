@@ -1,0 +1,1 @@
+True # s2 = s1 that make s2 alias to s1 refere to the same object
