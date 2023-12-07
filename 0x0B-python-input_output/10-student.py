@@ -17,17 +17,17 @@ class Student:
         of a Student instance
         """
         if (type(attrs) is list and all(type(itm) is str for itm in attrs)):
-            return {n: getattr(self, n) for n in attrs if hasattr(self, n)}
+            return {ky: getattr(self, ky) for ky in attrs if hasattr(self, ky)}
 
         return self.__dict__
 
 
 # The all() function checks each element in the iterable and
-# returns False if any element evaluates to False.
+# returns False if ''any'' element evaluates to False.
 # If all elements are True or the iterable is empty, it returns True.
 
 # getattr(object, name[, default]): This function returns
-# the value of an attribute of an object
+# the ''value'' of an attribute of an object
 
 # hasattr(object, name): This function checks
-# whether an object has a certain attribute.
+# whether an object ''has'' a certain attribute.
