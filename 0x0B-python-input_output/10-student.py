@@ -22,12 +22,12 @@ class Student:
         return self.__dict__
 
 
-# The all() function checks each element in the iterable and 
-# returns False if any element evaluates to False. 
+# The all() function checks each element in the iterable and
+# returns False if any element evaluates to False.
 # If all elements are True or the iterable is empty, it returns True.
 
 # getattr(object, name[, default]): This function returns
 # the value of an attribute of an object
 
-# hasattr(object, name): This function checks 
+# hasattr(object, name): This function checks
 # whether an object has a certain attribute.
