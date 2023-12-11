@@ -8,6 +8,7 @@ and to avoid duplicating the same code (by extension, same bugs).
 
 
 class Base:
+    """This a Base calss"""
     __nb_objects = 0
 
     def __init__(self, id=None):
