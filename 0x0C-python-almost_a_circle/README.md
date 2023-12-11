@@ -23,6 +23,7 @@ The AirBnB project is a big part of the Higher level curriculum. This project wi
 - JSON
 
 
+
 ## Learning Objectives
 - [ ] What is Unit testing and how to implement it in a large project
 - [ ] How to serialize and deserialize a Class
