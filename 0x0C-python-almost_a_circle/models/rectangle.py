@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module for Rectangle class that inherits from Base"""
-from base import Base 
+from models.base import Base 
 
 
 class Rectangle(Base):
@@ -11,3 +11,4 @@ class Rectangle(Base):
         self.__height = height
         self.__x = x
         self.__y = y
+        super().__init__(id)
