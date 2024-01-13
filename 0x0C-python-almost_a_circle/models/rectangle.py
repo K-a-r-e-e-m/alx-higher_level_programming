@@ -24,12 +24,12 @@ class Rectangle(Base):
         self.__width = new_value
 
     @property
-    def heigit(self):
+    def height(self):
         '''This is heigit getter decorator'''
         return self.__height
 
-    @heigit.setter
-    def heigit(self, new_value):
+    @height.setter
+    def height(self, new_value):
         '''This is heigit setter decoratror'''
         self.__height = new_value
 
