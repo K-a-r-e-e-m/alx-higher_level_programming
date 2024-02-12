@@ -1,7 +1,10 @@
 #!/usr/bin/node
+const myLen = process.argv.length;
 
-if (process.argv[2]) {
+if (myLen === 3) {
   console.log('Argument found');
+} else if (myLen > 3) {
+  console.log('Arguments found');
 } else {
   console.log('No argument');
 }
