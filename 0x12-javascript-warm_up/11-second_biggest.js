@@ -5,15 +5,15 @@ const myList = process.argv;
 if (myList.length <= 3) { // If the list empty of have 1 number
   console.log(0);
 } else {
-  let bigest = myList[2]; // First number
-  let secBig = myList[3]; // Second number
+  let bigest = Number(myList[2]); // First number
+  let secBig = Number(myList[3]); // Second number
 
   for (let i = 2; i < myList.length; i++) {
-    if (myList[i] > bigest) {
+    if (Number(myList[i]) > bigest) {
       secBig = bigest;
-      bigest = myList[i];
-    } else if (myList[i] > secBig && myList[i] < bigest) {
-      secBig = myList[i];
+      bigest = Number(myList[i]);
+    } else if (Number(myList[i]) > secBig && Number(myList[i]) < bigest) {
+      secBig = Number(myList[i]);
     }
   }
   console.log(secBig);
@@ -25,7 +25,7 @@ if (myList.length <= 3) { // If the list empty of have 1 number
 // const lenList = myList.length;
 // if (myList.length <= 3) {
 //     console.log(0);
-// } else { // slice the list to have only the numbers and sort it [1, 2, `3`, 4]
-//     const subList = process.argv.slice(2, lenList).sort((a, b) => a - b);
+// } else { // slice the list to have only the numbers and map Number funcoin and sort it
+//     const subList = process.argv.slice(2, lenList).map(Number).sort((a, b) => a - b);
 //     console.log(subList[subList.length - 2]) // Second elemnt from last
 // }
