@@ -1,12 +1,13 @@
 #!/usr/bin/node
 
 const myList = process.argv;
-let bigest = myList[2]; // First number
-let secBig = myList[3]; // Second number
 
 if (myList.length <= 3) { // If the list empty of have 1 number
   console.log(0);
 } else {
+  let bigest = myList[2]; // First number
+  let secBig = myList[3]; // Second number
+
   for (let i = 2; i < myList.length; i++) {
     if (myList[i] > bigest) {
       secBig = bigest;
