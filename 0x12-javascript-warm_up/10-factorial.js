@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-function fact(num) { return (num === 0 ? 1 : num * fact(num - 1)) }
+function fact (num) { return (num === 0 ? 1 : num * fact(num - 1)); }
 console.log(fact(Number(process.argv[2])));
 
 // Another solution with loop
