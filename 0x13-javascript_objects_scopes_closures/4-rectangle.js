@@ -23,9 +23,14 @@ class Rectangle {
 
   // This method exchanges the width and the height of the rectangle
   rotate () {
-    const tmp = this.width;
-    this.width = this.height;
-    this.height = tmp;
+    // Advanced swap with Array Destructuring.
+    [this.width, this.height] = [this.height, this.width];
+
+    // Easy way to swap.
+    //
+    // const tmp = this.width;
+    // this.width = this.height;
+    // this.height = tmp;
   }
 }
 module.exports = Rectangle;
