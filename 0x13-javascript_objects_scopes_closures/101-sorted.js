@@ -2,12 +2,12 @@
 
 const myD = require('./101-data').dict;
 
-newDict = {};
+const newDict = {};
 // Create a new dictionary:
 //      A key is a number of occurrences
 //      A value is the list of user ids
 
-for (const num in myD) { 
+for (const num in myD) {
   // For each old key in old dictionary
   // if the the value of the new key not exist or undefiend
   // make for this key a new value with type of list
