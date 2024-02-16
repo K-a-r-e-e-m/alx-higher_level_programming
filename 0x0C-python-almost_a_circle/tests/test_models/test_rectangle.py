@@ -30,6 +30,21 @@ class TestRectangle(unittest.TestCase):
         w.width = 3
         self.assertEqual(3, w.width)
 
+    def test_width_string(self):
+        '''Check if width is not integar'''
+        with self.assertRaises(TypeError):
+            Rectangle('df', 2)
+
+    def test_width_negative(self):
+        '''Check if width is negative'''
+        with self.assertRaises(ValueError):
+            Rectangle(-6, 2)
+
+    def test_width_zero(self):
+        '''Check if width is zero'''
+        with self.assertRaises(ValueError):
+            Rectangle(0, 4)
+
     def test_height(self):
         '''Check for value of height'''
         num = Rectangle(5, 6, 7, 8, 13)
@@ -40,6 +55,21 @@ class TestRectangle(unittest.TestCase):
         h = Rectangle(5, 2)
         h.height = 33
         self.assertEqual(33, h.height)
+
+    def test_height_string(self):
+        '''Check if heigth is not integar'''
+        with self.assertRaises(TypeError):
+            Rectangle(3, 'g')
+
+    def test_height_negative(self):
+        '''Check if height is negative'''
+        with self.assertRaises(ValueError):
+            Rectangle(6, -2)
+
+    def test_height_zero(self):
+        '''Check if height is negative'''
+        with self.assertRaises(ValueError):
+            Rectangle(6, 0)
 
     def test_x(self):
         '''Check for value of x'''
@@ -52,6 +82,16 @@ class TestRectangle(unittest.TestCase):
         par1.x = 23
         self.assertEqual(23, par1.x)
 
+    def test_x_string(self):
+        '''Check if x is not integar'''
+        with self.assertRaises(TypeError):
+            Rectangle(3, 2, '3')
+
+    def test_x_negative(self):
+        '''Check if height is negative'''
+        with self.assertRaises(ValueError):
+            Rectangle(6, 2, -2)
+
     def test_y(self):
         '''Check for value of y'''
         num = Rectangle(5, 6, 7, 8, 13)
@@ -62,6 +102,16 @@ class TestRectangle(unittest.TestCase):
         par2 = Rectangle(5, 2)
         par2.y = 31
         self.assertEqual(31, par2.y)
+
+    def test_y_string(self):
+        '''Check if y is not integar'''
+        with self.assertRaises(TypeError):
+            Rectangle(3, 2, 12, '88')
+
+    def test_y_negative(self):
+        '''Check if y is negative'''
+        with self.assertRaises(ValueError):
+            Rectangle(6, 2, 3, -2)
 
     def test_id(self):
         '''Check for value of id'''
