@@ -10,12 +10,20 @@ class TestRectangle(unittest.TestCase):
     def test_inheritance(self):
         '''Check for inheritance of class'''
         self.assertIsInstance(Rectangle(2, 5), Base)
-    
+
+    def test_zero_argument(self):
+        with self.assertRaises(TypeError):
+            Rectangle()
+
+    def test_one_argument(self):
+        with self.assertRaises(TypeError):
+            Rectangle(1)
+
     def test_width(self):
         '''Check for value of width'''
         num = Rectangle(5, 6, 7, 8, 13)
         self.assertEqual(5, num.width)
-    
+
     def test_width_setter(self):
         '''Check getter function of width'''
         w = Rectangle(5, 2)
@@ -65,6 +73,7 @@ class TestRectangle(unittest.TestCase):
         par3 = Rectangle(5, 2)
         par3.id = 36
         self.assertEqual(36, par3.id)
+
 
 if __name__ == '__main__':
     unittest.main()
