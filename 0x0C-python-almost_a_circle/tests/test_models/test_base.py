@@ -17,3 +17,6 @@ class TestBase(unittest.TestCase):
         """id is None"""
         n = Base()
         self.assertEqual(1, n.id)
+
+if __name__ == '__main__':
+    unittest.main()
