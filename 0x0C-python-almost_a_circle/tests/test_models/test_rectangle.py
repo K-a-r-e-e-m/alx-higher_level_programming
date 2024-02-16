@@ -36,7 +36,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_four_arguments(self):
         '''Check for four arguments'''
-        num = Rectangle(1)
+        num = Rectangle(1, 2, 3, 4)
         self.assertEqual(num.width, 1)
         self.assertEqual(num.height, 2)
         self.assertEqual(num.x, 3)
