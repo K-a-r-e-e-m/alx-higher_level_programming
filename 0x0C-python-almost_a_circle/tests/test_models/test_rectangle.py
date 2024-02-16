@@ -12,12 +12,35 @@ class TestRectangle(unittest.TestCase):
         self.assertIsInstance(Rectangle(2, 5), Base)
 
     def test_zero_argument(self):
+        '''If there is no arguments passed'''
         with self.assertRaises(TypeError):
             Rectangle()
 
     def test_one_argument(self):
+        '''If pass one arguemnt'''
         with self.assertRaises(TypeError):
             Rectangle(1)
+
+    def test_two_arguments(self):
+        '''Check for two arguments'''
+        num = Rectangle(1, 2)
+        self.assertEqual(num.width, 1)
+        self.assertEqual(num.height, 2)
+
+    def test_three_arguments(self):
+        '''Check for three arguments'''
+        num = Rectangle(1, 2, 3)
+        self.assertEqual(num.width, 1)
+        self.assertEqual(num.height, 2)
+        self.assertEqual(num.x, 3)
+
+    def test_four_arguments(self):
+        '''Check for four arguments'''
+        num = Rectangle(1)
+        self.assertEqual(num.width, 1)
+        self.assertEqual(num.height, 2)
+        self.assertEqual(num.x, 3)
+        self.assertEqual(num.y, 4)
 
     def test_width(self):
         '''Check for value of width'''
