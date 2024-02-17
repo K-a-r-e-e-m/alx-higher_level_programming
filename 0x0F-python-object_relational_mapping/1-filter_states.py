@@ -13,7 +13,7 @@ if __name__ == '__main__':
                                 database=sys.argv[3])
 
     cur = data_base.cursor()
-    cur.execute('SELECT * FROM states WHERE name LIKE "N%" ORDER BY id')
+    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id")
 
     rows = cur.fetchall()
     for i in rows:
