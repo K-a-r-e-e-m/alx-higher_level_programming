@@ -19,6 +19,13 @@ if __name__ == '__main__':
                   WHERE states.name = %s', (argv[4], ))
 
     rows = cur.fetchall()
-    print(", ".join([row[0] for row in rows]))
+    x = 0
+    for i in rows:
+        for col in i:
+            print(col, end='')
+        if (x < len(rows) - 1):
+            print(', ', end='')
+            x += 1
+
     cur.close()
     data_base.close()
