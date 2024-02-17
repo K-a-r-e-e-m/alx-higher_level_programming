@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     cur = data_base.cursor()
     cur.execute('SELECT * FROM states\
-                WHERE name LIKE BINARY %s ORDER BY id', (sys.argv[4], ))
+                WHERE name LIKE BINARY %s ORDER BY id', (sys.argv[4]))
 
     rows = cur.fetchall()
     for i in rows:
