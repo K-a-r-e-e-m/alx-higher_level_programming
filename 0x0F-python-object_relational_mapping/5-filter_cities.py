@@ -19,14 +19,22 @@ if __name__ == '__main__':
                   WHERE states.name = %s', (argv[4], ))
 
     rows = cur.fetchall()
-    x = 0
-    for i in rows:
-        for col in i:
-            print(col, end='')
-        if (x < len(rows) - 1):
-            print(', ', end='')
-            x += 1
-    print()
+
+    # This line use list comprehension to exract the first index
+    # that have city name of the given state
+    print(', '.join(each_row[0] for each_row in rows))
+
+    # This is the first solution I did then I found the power
+    # of join() function in python and used it
+    #
+    # x = 0
+    # for i in rows:
+    #     for col in i:
+    #         print(col, end='')
+    #     if (x < len(rows) - 1):
+    #         print(', ', end='')
+    #         x += 1
+    # print()
 
     cur.close()
     data_base.close()
