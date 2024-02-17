@@ -3,15 +3,21 @@
 import MySQLdb
 import sys
 
+
 if __name__ == '__main__':
 
-    data_base = MySQLdb.connect(host='localhost', port=3306, user=sys.argv[1], passwd=sys.argv[2], database=sys.argv[3])
+    data_base = MySQLdb.connect(host='localhost',
+                                port=3306,
+                                user=sys.argv[1],
+                                passwd=sys.argv[2],
+                                database=sys.argv[3])
+
     cur = data_base.cursor()
-    cur.execute('SELECT * FROM states ORDER BY id LIMIT 5')
+    cur.execute('SELECT * FROM states ORDER BY id')
 
     rows = cur.fetchall()
     for i in rows:
-        print ('{}'.format(i))
+        print(i)
 
     cur.close()
     data_base.close()
