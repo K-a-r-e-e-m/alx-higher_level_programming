@@ -26,6 +26,8 @@ if __name__ == '__main__':
         if (x < len(rows) - 1):
             print(', ', end='')
             x += 1
+        else:
+            print()
 
     cur.close()
     data_base.close()
