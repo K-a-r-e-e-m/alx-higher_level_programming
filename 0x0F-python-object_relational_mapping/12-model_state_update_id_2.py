@@ -22,9 +22,7 @@ if __name__ == '__main__':
     session.commit()
 
     # OR        session.query(State).filter(State.id == 2).first()
-    # OR 
+    # OR
     # for inst in query_result:
     #     if inst.id == 2:
     #         inst.name = 'New Mexico'
-
-    
