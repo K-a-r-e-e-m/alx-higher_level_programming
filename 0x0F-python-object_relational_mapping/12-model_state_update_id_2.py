@@ -19,7 +19,7 @@ if __name__ == '__main__':
     # for inst in query_result:
     #     if inst.id == 2:
     #         inst.name = 'New Mexico'
-    new_state = session.query(State).filter(State.id == 2)
+    new_state = session.query(State).filter(State.id == 2).first()
     new_state.name = 'New Mexico'
 
     session.commit()
