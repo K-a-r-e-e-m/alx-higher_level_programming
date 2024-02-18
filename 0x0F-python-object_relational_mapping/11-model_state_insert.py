@@ -21,6 +21,4 @@ if __name__ == '__main__':
     session.add(new_state)
     session.commit()
 
-    for instance in query_result:
-        if instance.name == 'Louisiana':
-            print(instance.id)
+    print(new_state.id)
