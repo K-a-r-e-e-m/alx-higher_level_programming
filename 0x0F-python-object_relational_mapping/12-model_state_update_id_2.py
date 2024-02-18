@@ -15,12 +15,11 @@ if __name__ == '__main__':
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    query_result = session.query(State).order_by(State.id)
 
-    for inst in query_result:
-        if inst.id == 2:
-            inst.name = 'New Mexico'
-    # OR new_state = session.query(state).filter(State.id == 2)
-    # new_state.name = 'New Mexico'
+    # for inst in query_result:
+    #     if inst.id == 2:
+    #         inst.name = 'New Mexico'
+    new_state = session.query(state).filter(State.id == 2)
+    new_state.name = 'New Mexico'
 
     session.commit()
