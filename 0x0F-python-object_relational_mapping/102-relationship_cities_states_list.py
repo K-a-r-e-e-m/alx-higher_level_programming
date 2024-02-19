@@ -2,7 +2,8 @@
 """This script lists all State objects, and corresponding City objects,
  contained in the database hbtn_0e_101_usa
 """
-from relationship_state import State
+from relationship_state import State, Base
+from relationship_city import City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sys import argv
