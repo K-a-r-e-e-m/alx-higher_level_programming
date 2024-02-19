@@ -10,7 +10,9 @@ Base = declarative_base()
 
 class State(Base):
 	'''This class links to the MySQL table states'''
+
 	__tablename__ = 'states'
+
 	id = Column(Integer, autoincrement=True, nullable=False, primary_key=True)
 	name = Column(String(128), nullable=False)
 	cities = relationship("City", cascade='all, delete', backref="state")
