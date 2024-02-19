@@ -7,9 +7,9 @@ from relationship_state import State, Base
 
 
 class City(Base):
-    '''This class links to the MySQL table cities'''
-    __tablename__ = 'cities'
+	'''This class links to the MySQL table cities'''
+	__tablename__ = 'cities'
 
-    id = Column(Integer, primary_key=True)
-    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
-    name = Column(String(128), nullable=False)
+	id = Column(Integer, primary_key=True)
+	state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
+	name = Column(String(128), nullable=False)
