@@ -19,19 +19,14 @@ def find_peak(list_of_integers):
     for i in range(1, len(list_of_integers) - 1):
 
         if list_of_integers[i - 1] <= list_of_integers[i]:
-            check1 = True
             peak = list_of_integers[i]
-        else:
-            check1 = False
 
         if list_of_integers[i] >= list_of_integers[i + 1]:
-            check2 = True
             peak = list_of_integers[i]
-        else:
-            check2 = False
+
     if list_of_integers[0] > peak:
         return list_of_integers[0]
     elif list_of_integers[len(list_of_integers) - 1] > peak:
         return list_of_integers[len(list_of_integers) - 1]
-    if check1 and check2:
+    else:
         return peak
