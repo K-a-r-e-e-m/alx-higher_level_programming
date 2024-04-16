@@ -29,6 +29,9 @@ def find_peak(list_of_integers):
             peak = list_of_integers[i]
         else:
             check2 = False
-
+    if list_of_integers[0] > peak:
+        return list_of_integers[0]
+    elif list_of_integers[len(list_of_integers) - 1] > peak:
+        return list_of_integers[len(list_of_integers) - 1]
     if check1 and check2:
         return peak
