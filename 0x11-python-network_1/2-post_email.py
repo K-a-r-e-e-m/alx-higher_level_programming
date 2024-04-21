@@ -11,7 +11,8 @@ if __name__ == '__main__':
 
     data = urllib.parse.urlencode(variable)  # Encoding data
     data = data.encode('utf-8')  # Specify encoding to bytes with utf-8
-    req = urllib.request.Request(sys.argv[1], data, variable)  # Send a request
+
+    req = urllib.request.Request(sys.argv[1], data)  # Send a request
     with urllib.request.urlopen(req) as response:
         body = response.read()
 
