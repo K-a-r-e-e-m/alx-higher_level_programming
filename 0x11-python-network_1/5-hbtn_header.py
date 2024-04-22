@@ -3,6 +3,6 @@
 from requests import get
 from sys import argv
 
-
-req = get(argv[1])
-print(req.headers['X-Request-Id'])
+if __name__ == '__main__':
+    req = get(argv[1])
+    print(req.headers['X-Request-Id'])
