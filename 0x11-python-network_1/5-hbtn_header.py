@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 '''displays the value of the variable X-Request-Id in the response header'''
-from requests import get, HTTPError
+from requests import get
 from sys import argv
 
+
 if __name__ == '__main__':
-    try:
-        req = get(argv[1])
+    req = get(argv[1])
+    if 'X-Request-Id' in req.headers:
         print(req.headers['X-Request-Id'])
-    except  HTTPError as er:
-        print(er)
