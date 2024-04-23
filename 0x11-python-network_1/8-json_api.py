@@ -13,7 +13,7 @@ if __name__ == '__main__':
     else:
         letter = ''
 
-    req = post('http://0.0.0.0:5000/search_user', data={"q": letter})
+    req = post('http://0.0.0.0:5000/search_user', json={"q": letter})
 
     try:
         json_req = req.json()
