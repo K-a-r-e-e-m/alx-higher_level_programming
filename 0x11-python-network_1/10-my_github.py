@@ -7,6 +7,6 @@ from requests import get
 from sys import argv
 
 if __name__ == '__main__':
-    # we also can user auth=HTTPBasicAuth(...) 
+    # We also can user auth=HTTPBasicAuth(...) but remove it is shorhand
     req = get('https://api.github.com/user', auth=(argv[1], argv[2]))
     print(req.json().get('id'))
