@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-'''Get GitHub credentials (username and password)
-   and uses the GitHub API to display your id
+'''list 10 commits (from the most recent to oldest) of the repository “rails”
+   by the user “rails”
 '''
 from requests import get
 from sys import argv
