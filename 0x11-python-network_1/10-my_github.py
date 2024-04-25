@@ -6,6 +6,6 @@ import requests
 from requests.auth import HTTPBasicAuth
 from sys import argv
 
-
-req = requests.get('https://api.github.com', auth=(argv[1], argv[2]))
-print(req.json().get('id'))
+if __name__ == '__main__':
+    req = requests.get('https://api.github.com', auth=(argv[1], argv[2]))
+    print(req.json().get('id'))
