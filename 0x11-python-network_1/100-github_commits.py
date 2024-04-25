@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-'''list 10 commits (from the most recent to oldest) of the repository “rails”
-   by the user “rails”
+'''list 10 commits (from the most recent to oldest)
+   of the repository “rails” by the user “rails”
 '''
 from requests import get
 from sys import argv
