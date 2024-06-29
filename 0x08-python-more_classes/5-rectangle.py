@@ -63,7 +63,9 @@ class Rectangle:
 
     def __repr__(self):
         """Return the string representaion of the object
-        as python code, we can evaluate the code by eval() """
+        as python code, we can evaluate the code by eval()
+        that run the string (evaluate it)
+        """
         return f"{self.__class__.__name__}({self.width}, {self.height})"
 
     def __del__(self):
