@@ -75,8 +75,9 @@ class Rectangle(Base):
 
     def display(self):
         """Represent rectangle by #"""
+        print('\n' * self.y, end='')
         for _ in range(self.height):
-            print('#' * self.width)
+            print(' ' * self.x + '#' * self.width)
 
     def __str__(self):
         """Add string representation for a class"""
