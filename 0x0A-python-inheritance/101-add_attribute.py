@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+'''This module has add_attribute function that add new attr'''
 
 def add_attribute(instance, name, value):
     """This function that adds a new attribute to an object"""
