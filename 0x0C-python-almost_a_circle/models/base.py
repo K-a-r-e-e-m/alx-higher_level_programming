@@ -61,8 +61,15 @@ class Base:
         # **dictionary must be used as **kwargs of the method update
         return dummy
 
+    @classmethod
     def load_from_file(cls):
         '''returns a list of instances'''
-        inst = cls.create()
-        cls.from_json_string(inst)
-        json.dump(inst, f'{cls.__name__}.json')
+        filename = f'{cls.__name__}.json'
+        try:
+            with open(filename, 'r') as f:
+                json_string = f.read()
+            dicLists = cls.from_json_string(json_string)
+            instances = [cls.create(**dic) for dic in dicLists]
+            return instances
+        except Exception:
+            return []
