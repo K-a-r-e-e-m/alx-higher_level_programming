@@ -19,7 +19,7 @@ class Square(Rectangle):
     def size(self):
         '''Getter for size'''
         return self.width
-    # size must be private to avoid recursion with size method
+
 
     @size.setter
     def size(self, newSize):
