@@ -53,7 +53,16 @@ class Base:
     def create(cls, **dictionary):
         '''returns an instance with all attributes already set'''
         # Dummy instance that we will update it at next step
-        dummy = cls(2, 3)
+        if len(dictionary) < 2:
+            dummy = cls(2)
+        else:
+            dummy = cls(2, 3)
         dummy.update(**dictionary)
         # **dictionary must be used as **kwargs of the method update
         return dummy
+
+    def load_from_file(cls):
+        '''returns a list of instances'''
+        inst = cls.create()
+        cls.from_json_string(inst)
+        json.dump(inst, f'{cls.__name__}.json')
