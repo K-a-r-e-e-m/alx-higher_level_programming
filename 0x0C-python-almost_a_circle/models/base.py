@@ -6,6 +6,7 @@ The goal of it is to manage id attribute in all your future classes
 and to avoid duplicating the same code (by extension, same bugs).
 """
 import json
+import csv
 
 
 class Base:
@@ -68,6 +69,35 @@ class Base:
         try:
             with open(filename, 'r') as f:
                 json_string = f.read()
+            dicLists = cls.from_json_string(json_string)
+            instances = [cls.create(**dic) for dic in dicLists]
+            return instances
+        except Exception:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''serializes in CSV'''
+
+        # This code is NOT CORRECT I will refactor it SOON
+        if list_objs is None or len(list_objs) == 0:
+            with open(f'{cls.__name__}.csv', 'w') as csvFile:
+                csvFile.write('[]')
+        else:
+            list_dicts = [lst.to_dictionary() for lst in list_objs]
+            jsnStr = cls.to_json_string(list_dicts)
+            with open(f'{cls.__name__}.csv', 'w') as jsnFile:
+                jsnFile.write(jsnStr)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''deserializes in CSV'''
+
+        # This code is NOT CORRECT I will refactor it SOON
+        filename = f'{cls.__name__}.csv'
+        try:
+            with open(filename, 'r') as csvf:
+                json_string = csvf.read()
             dicLists = cls.from_json_string(json_string)
             instances = [cls.create(**dic) for dic in dicLists]
             return instances
