@@ -9,7 +9,7 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         '''Constructor method that has special functino super()'''
         super().__init__(size, size, x, y, id)
-        self.__size = size
+        self.size = size
 
     def __str__(self):
         '''String representation of instance'''
@@ -18,7 +18,7 @@ class Square(Rectangle):
     @property
     def size(self):
         '''Getter for size'''
-        return self.__size
+        return self.width
     # size must be private to avoid recursion with size method
 
     @size.setter
@@ -30,4 +30,3 @@ class Square(Rectangle):
             raise ValueError('width must be > 0')
         self.width = newSize
         self.height = newSize
-        self.__size = newSize
