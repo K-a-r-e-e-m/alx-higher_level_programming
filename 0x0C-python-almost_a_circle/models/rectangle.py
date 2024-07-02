@@ -103,6 +103,11 @@ class Rectangle(Base):
             self.y = args[4]
 
     def to_dictionary(self):
-        """Convert instance to dictionary representation"""
-        return self.__dict__
-        # or   vars(self)
+        """Return dictionary representation of instance"""
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+            }
