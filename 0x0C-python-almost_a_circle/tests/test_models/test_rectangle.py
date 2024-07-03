@@ -208,15 +208,69 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(inst.x, 47)
         self.assertEqual(inst.y, 532)
 
-    def test_update_args_id_width(self):
+    def test_update_args_id_kwargs(self):
         '''Test the update on instance's attributes'''
         inst = Rectangle(2, 3, 4, 5, 7)
         inst.update(id=22)
-        self.assertEqual(inst.width, 2)
-        self.assertEqual(inst.height, 3)
-        self.assertEqual(inst.x, 4)
-        self.assertEqual(inst.y, 5)
-        self.assertEqual(inst.id, 22)
+        self.assertEqual(str(inst), '[Rectangle] (22) 4/5 - 2/3')
+
+    def test_update_args_id_width_kwargs(self):
+        '''Test the update on instance's attributes'''
+        inst = Rectangle(2, 3, 4, 5, 7)
+        inst.update(id=22, width=8)
+        self.assertEqual(str(inst), '[Rectangle] (22) 4/5 - 8/3')
+
+    def test_update_args_id_width_height_kawargs(self):
+        '''Test the update on instance's attributes'''
+        inst = Rectangle(2, 3, 4, 5, 7)
+        inst.update(id=22, width=8, height=12)
+        self.assertEqual(str(inst), '[Rectangle] (22) 4/5 - 8/12')
+
+    def test_update_args_id_width_height_x(self):
+        '''Test the update on instance's attributes'''
+        inst = Rectangle(2, 3, 4, 5, 7)
+        inst.update(id=22, width=8, height=12, x=3)
+        self.assertEqual(str(inst), '[Rectangle] (22) 3/5 - 8/12')
+        
+    def test_update_args_id_width_height_xy(self):
+        '''Test the update on instance's attributes'''
+        inst = Rectangle(2, 3, 4, 5, 7)
+        inst.update(id=22, width=8, height=12, x=3, y=1)
+        self.assertEqual(str(inst), '[Rectangle] (22) 3/1 - 8/12')
+
+    def test_to_dictionary(self):
+        '''Test convertion to dictionary'''
+        inst = Rectangle(2, 3, 4, 5, 7)
+        outp = inst.to_dictionary()
+        self.assertEqual(outp, {'id': 7, 'width': 2, 'height': 3, 'x': 4, 'y': 5})
+
+    def test_create_id(self):
+        '''Test create function'''
+        inst = Rectangle(2, 3)
+        out = inst.create(**{'id': 7})
+        self.assertEqual(str(out), '[Rectangle] (7) 0/0 - 1/1')
+
+    def test_create_id_width(self):
+        '''Test create function'''
+        out = Rectangle.create(**{'id': 7, 'width': 2})
+        self.assertEqual(str(out), '[Rectangle] (7) 0/0 - 2/1')
+
+    def test_create_width_height(self):
+        '''Test create function'''
+        out = Rectangle.create(**{'id': 7, 'width': 2, 'height': 3})
+        self.assertEqual(str(out), '[Rectangle] (7) 0/0 - 2/3')
+
+    def test_create_x(self):
+        '''Test create function'''
+        out = Rectangle.create(**{'id': 7, 'width': 2, 'height': 3, 'x': 4})
+        self.assertEqual(str(out), '[Rectangle] (7) 4/0 - 2/3')
+
+    def test_create_x_y(self):
+        '''Test create function'''
+        out = Rectangle.create(**{'id': 7, 'width': 2, 'height': 3, 'x': 4, 'y': 5})
+        self.assertEqual(str(out), '[Rectangle] (7) 4/5 - 2/3')
+
+
 class TestRectangleOutputDisplay(unittest.TestCase):
     '''This class for test display method'''
     def capture_output(self, inst, check):
