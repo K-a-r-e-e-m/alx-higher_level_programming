@@ -270,55 +270,7 @@ class TestRectangle(unittest.TestCase):
         '''Test create function'''
         out = Rectangle.create(**{'id': 7, 'width': 2, 'height': 3, 'x': 4, 'y': 5})
         self.assertEqual(str(out), '[Rectangle] (7) 4/5 - 2/3')
-
-    def test_save_to_file_None(self):
-        '''test save to file module'''
-        filename = 'Rectangle.json'
-        out = Rectangle.save_to_file(None)
-        with open(filename, 'r') as data:
-            out = data.read()
-        self.assertEqual(out, '[]')
-
-    def test_save_to_file_Empty(self):
-        '''test save to file module'''
-        filename = 'Rectangle.json'
-        out = Rectangle.save_to_file([])
-        with open(filename, 'r') as data:
-            out = data.read()
-        self.assertEqual(out, '[]')
         
-    def test_save_to_file(self):
-        '''test save to file module'''
-        filename = 'Rectangle.json'
-        r1 = Rectangle(10, 7, 2, 8)
-        r2 = Rectangle(2, 4)
-        out = Rectangle.save_to_file([r1, r2])
-        with open(filename, 'r') as data:
-            out = data.read()
-        self.assertEqual(out, Rectangle.to_json_string([r1.to_dictionary(), r2.to_dictionary()]))
-
-    def test_load_from_file_not_exists(self):
-        '''Test load from json file method'''
-        self.filename = 'Rectangle.json'
-        try:
-            os.remove(self.filename)
-        except FileNotFoundError:
-            pass
-        inst = Rectangle.load_from_file()
-        self.assertEqual(inst, [])
-    def test_load_from_file_exists(self):
-        '''Test load from json file method'''
-        self.filename = 'Rectangle.json'
-        r1 = Rectangle(10, 7, 2, 8)
-        list_rectangles_input = [r1]
-        Rectangle.save_to_file(list_rectangles_input)
-        list_rectangles_output = Rectangle.load_from_file()
-        self.assertEqual(r1.id, list_rectangles_output[0].id)
-        try:
-            os.remove(self.filename)
-        except FileNotFoundError:
-            pass
-
 class TestRectangleOutputDisplay(unittest.TestCase):
     '''This class for test display method'''
     def capture_output(self, inst, check):
@@ -377,6 +329,56 @@ class TestRectangleOutputDisplay(unittest.TestCase):
         output = self.capture_output(inst, 1)
         out = f'[Rectangle] ({inst.id}) 0/0 - {inst.width}/{inst.height}\n'
         self.assertEqual(output, out)
+
+class TestFileSaveAndLoad(unittest.TestCase):
+    '''This file to test save and load file'''
+
+    def setUp(self):
+        '''Set up temporary files for tests'''
+        self.filename = 'Rectangle.json'
+
+    def tearDown(self):
+        '''Clean up files after tests'''
+        try:
+            os.remove(self.filename)
+        except FileNotFoundError:
+            pass
+
+    def test_save_to_file_None(self):
+        '''test save to file module'''
+        out = Rectangle.save_to_file(None)
+        with open('Rectangle.json', 'r') as data:
+            out = data.read()
+        self.assertEqual(out, '[]')
+
+    def test_save_to_file_Empty(self):
+        '''test save to file module'''
+        out = Rectangle.save_to_file([])
+        with open('Rectangle.json', 'r') as data:
+            out = data.read()
+        self.assertEqual(out, '[]')
+        
+    def test_save_to_file(self):
+        '''test save to file module'''
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        out = Rectangle.save_to_file([r1, r2])
+        with open('Rectangle.json', 'r') as data:
+            out = data.read()
+        self.assertEqual(out, Rectangle.to_json_string([r1.to_dictionary(), r2.to_dictionary()]))
+
+    def test_load_from_file_not_exists(self):
+        '''Test load from json file method'''
+        inst = Rectangle.load_from_file()
+        self.assertEqual(inst, [])
+
+    def test_load_from_file_exists(self):
+        '''Test load from json file method'''
+        r1 = Rectangle(10, 7, 2, 8)
+        list_rectangles_input = [r1]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+        self.assertEqual(r1.id, list_rectangles_output[0].id)
 
 if __name__ == '__main__':
     unittest.main()
