@@ -158,25 +158,25 @@ class TestRectangle(unittest.TestCase):
         '''Test string representation'''
         inst = Rectangle(2, 4)
         out = f'[Rectangle] ({inst.id}) 0/0 - 2/4'
-        self.assertEqual(inst.__str__(), out)
+        self.assertEqual(str(inst), out)
 
     def test__str__x(self):
         '''Test string representation'''
         inst = Rectangle(2, 4, 5)
         out = f'[Rectangle] ({inst.id}) 5/0 - 2/4'
-        self.assertEqual(inst.__str__(), out)
+        self.assertEqual(str(inst), out)
 
     def test__str__xy(self):
         '''Test string representation'''
         inst = Rectangle(2, 4, 5, 8)
         out = f'[Rectangle] ({inst.id}) 5/8 - 2/4'
-        self.assertEqual(inst.__str__(), out)
+        self.assertEqual(str(inst), out)
 
     def test__str__xy_id(self):
         '''Test string representation'''
         inst = Rectangle(2, 4, 5, 8, 22)
         out = '[Rectangle] (22) 5/8 - 2/4'
-        self.assertEqual(inst.__str__(), out)
+        self.assertEqual(str(inst), out)
 
     def test_update_args_id(self):
         '''Test the update on instance's attributes'''
@@ -208,6 +208,15 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(inst.x, 47)
         self.assertEqual(inst.y, 532)
 
+    def test_update_args_id_width(self):
+        '''Test the update on instance's attributes'''
+        inst = Rectangle(2, 3, 4, 5, 7)
+        inst.update(id=22)
+        self.assertEqual(inst.width, 2)
+        self.assertEqual(inst.height, 3)
+        self.assertEqual(inst.x, 4)
+        self.assertEqual(inst.y, 5)
+        self.assertEqual(inst.id, 22)
 class TestRectangleOutputDisplay(unittest.TestCase):
     '''This class for test display method'''
     def capture_output(self, inst, check):
