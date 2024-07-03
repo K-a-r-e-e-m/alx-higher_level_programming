@@ -21,86 +21,61 @@ class TestRectangle(unittest.TestCase):
 
     def test_one_argument(self):
         '''If pass one arguemnt'''
-        with self.assertRaises(TypeError):
-            Square(1)
+        num = Square(1)
+        self.assertEqual(num.width, 1)
+        self.assertEqual(num.height, 1)
 
     def test_two_arguments(self):
         '''Check for two arguments'''
         num = Square(1, 2)
-        self.assertEqual(num.width, 1)
-        self.assertEqual(num.height, 2)
+        self.assertEqual(num.size, 1)
+        self.assertEqual(num.x, 2)
 
     def test_three_arguments(self):
         '''Check for three arguments'''
         num = Square(1, 2, 3)
-        self.assertEqual(num.width, 1)
-        self.assertEqual(num.height, 2)
-        self.assertEqual(num.x, 3)
+        self.assertEqual(num.size, 1)
+        self.assertEqual(num.x, 2)
+        self.assertEqual(num.y, 3)
 
     def test_four_arguments(self):
         '''Check for four arguments'''
         num = Square(1, 2, 3, 4)
-        self.assertEqual(num.width, 1)
-        self.assertEqual(num.height, 2)
-        self.assertEqual(num.x, 3)
-        self.assertEqual(num.y, 4)
+        self.assertEqual(num.size, 1)
+        self.assertEqual(num.x, 2)
+        self.assertEqual(num.y, 3)
+        self.assertEqual(num.id, 4)
 
-    def test_width(self):
-        '''Check for value of width'''
-        num = Square(5, 6, 7, 8, 13)
-        self.assertEqual(5, num.width)
+    def test_size(self):
+        '''Check for value of size'''
+        num = Square(5, 6, 7, 8)
+        self.assertEqual(5, num.size)
 
-    def test_width_setter(self):
-        '''Check getter function of width'''
-        w = Square(5, 2)
-        w.width = 3
-        self.assertEqual(3, w.width)
+    def test_size_setter(self):
+        '''Check getter function of size'''
+        w = Square(5)
+        w.size = 3
+        self.assertEqual(3, w.size)
 
-    def test_width_string(self):
-        '''Check if width is not integar'''
+    def test_size_string(self):
+        '''Check if size is not integar'''
         with self.assertRaises(TypeError):
-            Square('df', 2)
+            Square('df')
 
-    def test_width_negative(self):
-        '''Check if width is negative'''
+    def test_size_negative(self):
+        '''Check if size is negative'''
         with self.assertRaises(ValueError):
-            Square(-6, 2)
+            Square(-6)
 
-    def test_width_zero(self):
-        '''Check if width is zero'''
+    def test_size_zero(self):
+        '''Check if size is zero'''
         with self.assertRaises(ValueError):
-            Square(0, 4)
-
-    def test_height(self):
-        '''Check for value of height'''
-        num = Square(5, 6, 7, 8, 13)
-        self.assertEqual(6, num.height)
-
-    def test_height_setter(self):
-        '''Check getter function of width'''
-        h = Square(5, 2)
-        h.height = 33
-        self.assertEqual(33, h.height)
-
-    def test_height_string(self):
-        '''Check if heigth is not integar'''
-        with self.assertRaises(TypeError):
-            Square(3, 'g')
-
-    def test_height_negative(self):
-        '''Check if height is negative'''
-        with self.assertRaises(ValueError):
-            Square(6, -2)
-
-    def test_height_zero(self):
-        '''Check if height is negative'''
-        with self.assertRaises(ValueError):
-            Square(6, 0)
+            Square(0)
 
     def test_x(self):
         '''Check for value of x'''
-        num = Square(5, 6, 7, 8, 13)
-        self.assertEqual(7, num.x)
+        num = Square(5, 6, 7, 8)
+        self.assertEqual(6, num.x)
 
     def test_x_setter(self):
         '''Check getter function of width'''
@@ -111,17 +86,17 @@ class TestRectangle(unittest.TestCase):
     def test_x_string(self):
         '''Check if x is not integar'''
         with self.assertRaises(TypeError):
-            Square(3, 2, '3')
+            Square(3, '3')
 
     def test_x_negative(self):
         '''Check if height is negative'''
         with self.assertRaises(ValueError):
-            Square(6, 2, -2)
+            Square(6, -2)
 
     def test_y(self):
         '''Check for value of y'''
-        num = Square(5, 6, 7, 8, 13)
-        self.assertEqual(8, num.y)
+        num = Square(5, 6, 7)
+        self.assertEqual(7, num.y)
 
     def test_y_setter(self):
         '''Check getter function of width'''
@@ -132,17 +107,17 @@ class TestRectangle(unittest.TestCase):
     def test_y_string(self):
         '''Check if y is not integar'''
         with self.assertRaises(TypeError):
-            Square(3, 2, 12, '88')
+            Square(3, 2, '88')
 
     def test_y_negative(self):
         '''Check if y is negative'''
         with self.assertRaises(ValueError):
-            Square(6, 2, 3, -2)
+            Square(6, 2, -2)
 
     def test_id(self):
         '''Check for value of id'''
-        num = Square(5, 6, 7, 8, 13)
-        self.assertEqual(13, num.id)
+        num = Square(5, 6, 7, 8)
+        self.assertEqual(8, num.id)
 
     def test_id_setter(self):
         '''Check getter function of width'''
@@ -152,126 +127,112 @@ class TestRectangle(unittest.TestCase):
 
     def test_area(self):
         '''Test area or Square'''
-        inst = Square(2, 4)
-        self.assertEqual(inst.area(), 8)
+        inst = Square(2)
+        self.assertEqual(inst.area(), 4)
 
     def test__str__(self):
         '''Test string representation'''
-        inst = Square(2, 4)
-        out = f'[Square] ({inst.id}) 0/0 - 2/4'
+        inst = Square(2)
+        out = f'[Square] ({inst.id}) 0/0 - 2'
         self.assertEqual(str(inst), out)
 
     def test__str__x(self):
         '''Test string representation'''
-        inst = Square(2, 4, 5)
-        out = f'[Square] ({inst.id}) 5/0 - 2/4'
+        inst = Square(2, 5)
+        out = f'[Square] ({inst.id}) 5/0 - 2'
         self.assertEqual(str(inst), out)
 
     def test__str__xy(self):
         '''Test string representation'''
-        inst = Square(2, 4, 5, 8)
-        out = f'[Square] ({inst.id}) 5/8 - 2/4'
+        inst = Square(2, 5, 8)
+        out = f'[Square] ({inst.id}) 5/8 - 2'
         self.assertEqual(str(inst), out)
 
     def test__str__xy_id(self):
         '''Test string representation'''
-        inst = Square(2, 4, 5, 8, 22)
-        out = '[Square] (22) 5/8 - 2/4'
+        inst = Square(2, 5, 8, 22)
+        out = '[Square] (22) 5/8 - 2'
         self.assertEqual(str(inst), out)
 
     def test_update_args_id(self):
         '''Test the update on instance's attributes'''
-        inst = Square(2, 3, 4, 5)
+        inst = Square(2, 4, 5)
         inst.update(1000)
         self.assertEqual(inst.id, 1000)
-        self.assertEqual(inst.width, 2)
-        self.assertEqual(inst.height, 3)
+        self.assertEqual(inst.size, 2)
         self.assertEqual(inst.x, 4)
         self.assertEqual(inst.y, 5)
 
     def test_update_args_id_width(self):
         '''Test the update on instance's attributes'''
         inst = Square(2, 3, 4, 5)
-        inst.update(12, 223, 3, 4, 5)
+        inst.update(12, 223, 4, 5)
         self.assertEqual(inst.id, 12)
-        self.assertEqual(inst.width, 223)
-        self.assertEqual(inst.height, 3)
+        self.assertEqual(inst.size, 223)
         self.assertEqual(inst.x, 4)
         self.assertEqual(inst.y, 5)
 
     def test_update_args_all(self):
         '''Test the update on instance's attributes'''
         inst = Square(2, 3, 4, 5)
-        inst.update(12, 223, 33, 47, 532)
+        inst.update(12, 223, 47, 532)
         self.assertEqual(inst.id, 12)
-        self.assertEqual(inst.width, 223)
-        self.assertEqual(inst.height, 33)
+        self.assertEqual(inst.size, 223)
         self.assertEqual(inst.x, 47)
         self.assertEqual(inst.y, 532)
 
     def test_update_args_id_kwargs(self):
         '''Test the update on instance's attributes'''
-        inst = Square(2, 3, 4, 5, 7)
+        inst = Square(2, 4, 5, 7)
         inst.update(id=22)
-        self.assertEqual(str(inst), '[Square] (22) 4/5 - 2/3')
+        self.assertEqual(str(inst), '[Square] (22) 4/5 - 2')
 
     def test_update_args_id_width_kwargs(self):
         '''Test the update on instance's attributes'''
-        inst = Square(2, 3, 4, 5, 7)
-        inst.update(id=22, width=8)
-        self.assertEqual(str(inst), '[Square] (22) 4/5 - 8/3')
-
-    def test_update_args_id_width_height_kawargs(self):
-        '''Test the update on instance's attributes'''
-        inst = Square(2, 3, 4, 5, 7)
-        inst.update(id=22, width=8, height=12)
-        self.assertEqual(str(inst), '[Square] (22) 4/5 - 8/12')
+        inst = Square(2, 4, 5, 7)
+        inst.update(id=22, size=8)
+        self.assertEqual(str(inst), '[Square] (22) 4/5 - 8')
 
     def test_update_args_id_width_height_x(self):
         '''Test the update on instance's attributes'''
-        inst = Square(2, 3, 4, 5, 7)
-        inst.update(id=22, width=8, height=12, x=3)
-        self.assertEqual(str(inst), '[Square] (22) 3/5 - 8/12')
+        inst = Square(2, 3, 5, 7)
+        inst.update(id=22, size=8, x=3)
+        self.assertEqual(str(inst), '[Square] (22) 3/5 - 8')
         
     def test_update_args_id_width_height_xy(self):
         '''Test the update on instance's attributes'''
-        inst = Square(2, 3, 4, 5, 7)
-        inst.update(id=22, width=8, height=12, x=3, y=1)
-        self.assertEqual(str(inst), '[Square] (22) 3/1 - 8/12')
+        inst = Square(2, 3, 5, 7)
+        inst.update(id=22, size=8, height=12, x=3, y=1)
+        self.assertEqual(str(inst), '[Square] (22) 3/1 - 8')
 
     def test_to_dictionary(self):
         '''Test convertion to dictionary'''
-        inst = Square(2, 3, 4, 5, 7)
+        inst = Square(2, 4, 5, 7)
         outp = inst.to_dictionary()
-        self.assertEqual(outp, {'id': 7, 'width': 2, 'height': 3, 'x': 4, 'y': 5})
+        self.assertEqual(outp, {'id': 7, 'size': 2, 'x': 4, 'y': 5})
 
     def test_create_id(self):
         '''Test create function'''
-        inst = Square(2, 3)
+        inst = Square(2)
         out = inst.create(**{'id': 7})
-        self.assertEqual(str(out), '[Square] (7) 0/0 - 1/1')
+        self.assertEqual(str(out), '[Square] (7) 0/0 - 1')
 
     def test_create_id_width(self):
         '''Test create function'''
-        out = Square.create(**{'id': 7, 'width': 2})
-        self.assertEqual(str(out), '[Square] (7) 0/0 - 2/1')
-
-    def test_create_width_height(self):
-        '''Test create function'''
-        out = Square.create(**{'id': 7, 'width': 2, 'height': 3})
-        self.assertEqual(str(out), '[Square] (7) 0/0 - 2/3')
+        out = Square.create(**{'id': 7, 'size': 2})
+        self.assertEqual(str(out), '[Square] (7) 0/0 - 2')
 
     def test_create_x(self):
         '''Test create function'''
-        out = Square.create(**{'id': 7, 'width': 2, 'height': 3, 'x': 4})
-        self.assertEqual(str(out), '[Square] (7) 4/0 - 2/3')
+        out = Square.create(**{'id': 7, 'size': 3, 'x': 4})
+        self.assertEqual(str(out), '[Square] (7) 4/0 - 3')
 
     def test_create_x_y(self):
         '''Test create function'''
-        out = Square.create(**{'id': 7, 'width': 2, 'height': 3, 'x': 4, 'y': 5})
-        self.assertEqual(str(out), '[Square] (7) 4/5 - 2/3')
+        out = Square.create(**{'id': 7, 'size': 3, 'x': 4, 'y': 5})
+        self.assertEqual(str(out), '[Square] (7) 4/5 - 3')
         
-class TestRectangleOutputDisplay(unittest.TestCase):
+class TestSquareOutputDisplay(unittest.TestCase):
     '''This class for test display method'''
     def capture_output(self, inst, check):
         '''Capture the output of screeen from stdout'''
@@ -295,39 +256,39 @@ class TestRectangleOutputDisplay(unittest.TestCase):
 
     def test_display(self):
         '''Test display method without x and y'''
-        inst = Square(2, 3)
+        inst = Square(2)
         output = self.capture_output(inst, 0)
-        self.assertEqual(output, '##\n##\n##\n')
+        self.assertEqual(output, '##\n##\n')
 
     def test_display_x0_y0(self):
         '''Test display method without x and y'''
-        inst = Square(1, 2, 0, 0)
+        inst = Square(1, 0, 0)
         output = self.capture_output(inst, 0)
-        self.assertEqual(output, '#\n#\n')
+        self.assertEqual(output, '#\n')
 
     def test_display_x(self):
         '''Test display method without x and y'''
-        inst = Square(2, 3, 2)
+        inst = Square(2, 2)
         output = self.capture_output(inst, 0)
-        self.assertEqual(output, '  ##\n  ##\n  ##\n')
+        self.assertEqual(output, '  ##\n  ##\n')
 
     def test_display_y(self):
         '''Test display method without x and y'''
-        inst = Square(2, 3, 0, 3)
+        inst = Square(2, 0, 3)
         output = self.capture_output(inst, 0)
-        self.assertEqual(output, '\n\n\n##\n##\n##\n')
+        self.assertEqual(output, '\n\n\n##\n##\n')
 
     def test_display_xy_(self):
         '''Test display method without x and y'''
-        inst = Square(2, 3, 1, 2)
+        inst = Square(2, 1, 2)
         output = self.capture_output(inst, 0)
-        self.assertEqual(output, '\n\n ##\n ##\n ##\n')
+        self.assertEqual(output, '\n\n ##\n ##\n')
 
     def test__str__with_print(self):
         '''Test string representation'''
-        inst = Square(2, 4)
+        inst = Square(2)
         output = self.capture_output(inst, 1)
-        out = f'[Square] ({inst.id}) 0/0 - {inst.width}/{inst.height}\n'
+        out = f'[Square] ({inst.id}) 0/0 - {inst.size}\n'
         self.assertEqual(output, out)
 
 class TestFileSaveAndLoad(unittest.TestCase):
