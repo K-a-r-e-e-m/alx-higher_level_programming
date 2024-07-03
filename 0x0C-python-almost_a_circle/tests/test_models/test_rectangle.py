@@ -158,7 +158,7 @@ class TestRectangle(unittest.TestCase):
         '''Test string representation'''
         inst = Rectangle(2, 4)
         out = f'[Rectangle] ({inst.id}) 0/0 - {inst.width}/{inst.height}'
-        self.assertEqual(inst.__str__(), out)
+        self.assertEqual(str(inst), out)
 
     def test__str__x(self):
         '''Test string representation'''
@@ -210,7 +210,7 @@ class TestRectangle(unittest.TestCase):
 
 class TestRectangleOutputDisplay(unittest.TestCase):
     '''This class for test display method'''
-    def capture_output(self, method):
+    def capture_output(self, inst, check):
         '''Capture the output of screeen from stdout'''
         # Create StringIO object to capture output temporary 
         # instead of __stdout__ (the output on screen or terminal)
@@ -221,7 +221,10 @@ class TestRectangleOutputDisplay(unittest.TestCase):
         # to this buffer (A temporary storage area in memory)
         sys.stdout = output
         # Call method that print, the output will display on the StringIo not screen!
-        method()
+        if check:
+            print(inst)
+        else:
+            inst.display()
         # Restore the output to standered output __stdout__
         sys.stdout = sys.__stdout__
         # Get the value of these data that stored in memeory 
@@ -230,32 +233,39 @@ class TestRectangleOutputDisplay(unittest.TestCase):
     def test_display(self):
         '''Test display method without x and y'''
         inst = Rectangle(2, 3)
-        output = self.capture_output(inst.display)
+        output = self.capture_output(inst, 0)
         self.assertEqual(output, '##\n##\n##\n')
 
     def test_display_x0_y0(self):
         '''Test display method without x and y'''
         inst = Rectangle(1, 2, 0, 0)
-        output = self.capture_output(inst.display)
+        output = self.capture_output(inst, 0)
         self.assertEqual(output, '#\n#\n')
 
     def test_display_x(self):
         '''Test display method without x and y'''
         inst = Rectangle(2, 3, 2)
-        output = self.capture_output(inst.display)
+        output = self.capture_output(inst, 0)
         self.assertEqual(output, '  ##\n  ##\n  ##\n')
 
     def test_display_y(self):
         '''Test display method without x and y'''
         inst = Rectangle(2, 3, 0, 3)
-        output = self.capture_output(inst.display)
+        output = self.capture_output(inst, 0)
         self.assertEqual(output, '\n\n\n##\n##\n##\n')
 
     def test_display_xy_(self):
         '''Test display method without x and y'''
         inst = Rectangle(2, 3, 1, 2)
-        output = self.capture_output(inst.display)
+        output = self.capture_output(inst, 0)
         self.assertEqual(output, '\n\n ##\n ##\n ##\n')
+
+    def test__str__with_print(self):
+        '''Test string representation'''
+        inst = Rectangle(2, 4)
+        output = self.capture_output(inst, 1)
+        out = f'[Rectangle] ({inst.id}) 0/0 - {inst.width}/{inst.height}\n'
+        self.assertEqual(output, out)
 
 if __name__ == '__main__':
     unittest.main()
