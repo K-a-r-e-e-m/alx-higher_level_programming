@@ -54,10 +54,10 @@ class Base:
     def create(cls, **dictionary):
         '''returns an instance with all attributes already set'''
         # Dummy instance that we will update it at next step
-        if len(dictionary) < 2:
-            dummy = cls(2)
+        if cls.__name__ == 'Rectangle':
+            dummy = cls(1, 1)
         else:
-            dummy = cls(2, 3)
+            dummy = cls(1)
         dummy.update(**dictionary)
         # **dictionary must be used as **kwargs of the method update
         return dummy
