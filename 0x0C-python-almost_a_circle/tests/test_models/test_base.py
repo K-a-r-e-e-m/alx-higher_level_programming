@@ -1,5 +1,7 @@
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
 """
 This module for test cases for base base module
 """
@@ -44,6 +46,30 @@ class TestBase(unittest.TestCase):
         '''Check if json string is empty'''
         inst = Base().to_json_string({})
         self.assertEqual(inst, '[]')
+
+    def test_from_json_string(self):
+        '''Check for None'''
+        json_string = '{"id": 4, "width": 5, "height": 6}'
+        out = Base.from_json_string(json_string)
+        self.assertEqual(out, {'id': 4, 'width': 5, 'height': 6})
+
+    def test_from_json_string_many(self):
+        '''Check for None'''
+        json_string = '[{"id": 4, "width": 5, "height": 6}, {"id": 32, "width": 55, "height": 26}]'
+        out = Base.from_json_string(json_string)
+        self.assertEqual(out, [{'id': 4, 'width': 5, 'height': 6}, {'id': 32, 'width': 55, 'height': 26}])
+
+    def test_from_json_string_none(self):
+        '''Check for None'''
+        json_string = None
+        out = Base.from_json_string(json_string)
+        self.assertEqual(out, [])
+
+    def test_from_json_string_empty(self):
+        '''Check for None'''
+        json_string = '[]'
+        out = Base.from_json_string(json_string)
+        self.assertEqual(out, [])
 
 if __name__ == '__main__':
     unittest.main()
