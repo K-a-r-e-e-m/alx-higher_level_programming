@@ -154,6 +154,60 @@ class TestRectangle(unittest.TestCase):
         inst = Rectangle(2, 4)
         self.assertEqual(inst.area(), 8)
 
+    def test__str__(self):
+        '''Test string representation'''
+        inst = Rectangle(2, 4)
+        out = f'[Rectangle] ({inst.id}) 0/0 - {inst.width}/{inst.height}'
+        self.assertEqual(inst.__str__(), out)
+
+    def test__str__x(self):
+        '''Test string representation'''
+        inst = Rectangle(2, 4)
+        out = f'[Rectangle] ({inst.id}) {inst.x}/0 - {inst.width}/{inst.height}'
+        self.assertEqual(inst.__str__(), out)
+
+    def test__str__y(self):
+        '''Test string representation'''
+        inst = Rectangle(2, 4)
+        out = f'[Rectangle] ({inst.id}) 0/{inst.y} - {inst.width}/{inst.height}'
+        self.assertEqual(inst.__str__(), out)
+
+    def test__str__xy(self):
+        '''Test string representation'''
+        inst = Rectangle(2, 4)
+        out = f'[Rectangle] ({inst.id}) {inst.x}/{inst.y} - {inst.width}/{inst.height}'
+        self.assertEqual(inst.__str__(), out)
+
+    def test_update_args_id(self):
+        '''Test the update on instance's attributes'''
+        inst = Rectangle(2, 3, 4, 5)
+        inst.update(1000)
+        self.assertEqual(inst.id, 1000)
+        self.assertEqual(inst.width, 2)
+        self.assertEqual(inst.height, 3)
+        self.assertEqual(inst.x, 4)
+        self.assertEqual(inst.y, 5)
+
+    def test_update_args_id_width(self):
+        '''Test the update on instance's attributes'''
+        inst = Rectangle(2, 3, 4, 5)
+        inst.update(12, 223, 3, 4, 5)
+        self.assertEqual(inst.id, 12)
+        self.assertEqual(inst.width, 223)
+        self.assertEqual(inst.height, 3)
+        self.assertEqual(inst.x, 4)
+        self.assertEqual(inst.y, 5)
+
+    def test_update_args_all(self):
+        '''Test the update on instance's attributes'''
+        inst = Rectangle(2, 3, 4, 5)
+        inst.update(12, 223, 33, 47, 532)
+        self.assertEqual(inst.id, 12)
+        self.assertEqual(inst.width, 223)
+        self.assertEqual(inst.height, 33)
+        self.assertEqual(inst.x, 47)
+        self.assertEqual(inst.y, 532)
+
 class TestRectangleOutputDisplay(unittest.TestCase):
     '''This class for test display method'''
     def capture_output(self, method):
