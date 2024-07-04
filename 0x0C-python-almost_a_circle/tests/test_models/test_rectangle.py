@@ -373,12 +373,12 @@ class TestFileSaveAndLoad(unittest.TestCase):
         self.assertEqual(inst, [])
 
     def test_load_from_file_exists(self):
-        '''Test load from json file method'''
+        '''Test load from json file  method'''
         r1 = Rectangle(10, 7, 2, 8)
         list_rectangles_input = [r1]
         Rectangle.save_to_file(list_rectangles_input)
         list_rectangles_output = Rectangle.load_from_file()
         self.assertEqual(r1.id, list_rectangles_output[0].id)
-
+ 
 if __name__ == '__main__':
     unittest.main()
