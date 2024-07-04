@@ -234,7 +234,7 @@ class TestRectangle(unittest.TestCase):
         
 class TestSquareOutputDisplay(unittest.TestCase):
     '''This class for test display method'''
-    def capture_output(self, inst, check):
+    def capture_output(self, inst, *args):
         '''Capture the output of screeen from stdout'''
         # Create StringIO object to capture output temporary 
         # instead of __stdout__ (the output on screen or terminal)
@@ -245,7 +245,7 @@ class TestSquareOutputDisplay(unittest.TestCase):
         # to this buffer (A temporary storage area in memory)
         sys.stdout = output
         # Call method that print, the output will display on the StringIo not screen!
-        if check:
+        if args:
             print(inst)
         else:
             inst.display()
@@ -257,37 +257,37 @@ class TestSquareOutputDisplay(unittest.TestCase):
     def test_display(self):
         '''Test display method without x and y'''
         inst = Square(2)
-        output = self.capture_output(inst, 0)
+        output = self.capture_output(inst)
         self.assertEqual(output, '##\n##\n')
 
     def test_display_x0_y0(self):
         '''Test display method without x and y'''
         inst = Square(1, 0, 0)
-        output = self.capture_output(inst, 0)
+        output = self.capture_output(inst)
         self.assertEqual(output, '#\n')
 
     def test_display_x(self):
         '''Test display method without x and y'''
         inst = Square(2, 2)
-        output = self.capture_output(inst, 0)
+        output = self.capture_output(inst)
         self.assertEqual(output, '  ##\n  ##\n')
 
     def test_display_y(self):
         '''Test display method without x and y'''
         inst = Square(2, 0, 3)
-        output = self.capture_output(inst, 0)
+        output = self.capture_output(inst)
         self.assertEqual(output, '\n\n\n##\n##\n')
 
     def test_display_xy_(self):
         '''Test display method without x and y'''
         inst = Square(2, 1, 2)
-        output = self.capture_output(inst, 0)
+        output = self.capture_output(inst)
         self.assertEqual(output, '\n\n ##\n ##\n')
 
     def test__str__with_print(self):
         '''Test string representation'''
         inst = Square(2)
-        output = self.capture_output(inst, 1)
+        output = self.capture_output(inst, True)
         out = f'[Square] ({inst.id}) 0/0 - {inst.size}\n'
         self.assertEqual(output, out)
 
