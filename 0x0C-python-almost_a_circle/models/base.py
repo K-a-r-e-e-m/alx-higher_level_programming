@@ -77,29 +77,38 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        '''serializes in CSV'''
-
-        # This code is NOT CORRECT I will refactor it SOON
-        if list_objs is None or len(list_objs) == 0:
-            with open(f'{cls.__name__}.csv', 'w') as csvFile:
+        '''Serializes in CSV'''
+        with open(f"{cls.__name__}.csv", 'w') as csvFile:
+            if list_objs is None or len(list_objs) == 0:
                 csvFile.write('[]')
-        else:
-            list_dicts = [lst.to_dictionary() for lst in list_objs]
-            jsnStr = cls.to_json_string(list_dicts)
-            with open(f'{cls.__name__}.csv', 'w') as jsnFile:
-                jsnFile.write(jsnStr)
+            else:
+                # convert each obj or instance to dict then store it in list
+                list_dicts = [obj.to_dictionary() for obj in list_objs]
+                # Retrieves the keys from the first dictionary
+                keys = list_dicts[0].keys()
+                dict_writer = csv.DictWriter(csvFile, fieldnames=keys)
+                # Writes the header row to the CSV file
+                dict_writer.writeheader()
+                # Writes all dictionaries (rows) to CSV
+                dict_writer.writerows(list_dicts)
 
     @classmethod
     def load_from_file_csv(cls):
-        '''deserializes in CSV'''
-
-        # This code is NOT CORRECT I will refactor it SOON
-        filename = f'{cls.__name__}.csv'
+        '''Deserializes from CSV'''
         try:
-            with open(filename, 'r') as csvf:
-                json_string = csvf.read()
-            dicLists = cls.from_json_string(json_string)
-            instances = [cls.create(**dic) for dic in dicLists]
-            return instances
-        except Exception:
+            with open(f"{cls.__name__}.csv", 'r') as csvFile:
+                dict_reader = csv.DictReader(csvFile)
+                list_objs = []  # Empty list to store instances
+                # Iterates over each row (dictionary)
+                for row in dict_reader:
+                    # Iterates over each key in the dictionary
+                    for key in row:
+                        row[key] = int(row[key])
+                    # Converts each value in the dictionary (row) to an integer
+                    # Creates an instance of the class and add it to list_objs
+                    list_objs.append(cls.create(**row))
+                # After create instances from all rows (dictoianries)
+                # Return the list of objects or instances
+                return list_objs
+        except FileNotFoundError:
             return []
