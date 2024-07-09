@@ -1,9 +1,9 @@
 6 july 2024 --- Working on Airbnb_clone forked repo	
-				create cmd (console) and classes	
+		create cmd (console) and classes	
 
 7 july 2024 --- Working on Airbnb_clone forked repo
-				Fix bugs in BaseModel and FileStorage classes
+		Fix bugs in BaseModel and FileStorage classes
 
 9 july 2024 --- Working on Airbnb_clone forked repo
-				Add new tests for FileStorage class and 
-				working on console file
+		Add new tests for FileStorage class and 
+		working on console file
