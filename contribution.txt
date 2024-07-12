@@ -7,3 +7,6 @@
 9 july 2024 --- Working on Airbnb_clone forked repo
 		Add new tests for FileStorage class and 
 		working on console file
+
+12 july 2024 --- Working on Airbnb_clone Deploy static poject
+		Deploy my Airbnb_clone to my server
